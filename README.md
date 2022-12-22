@@ -80,8 +80,6 @@ Nach dem Modul habe ich die Infrastruktur noch erweitert, dabei habe ich mit fol
 
 ## [SW1: Webserver installieren/konfigurieren](SW1/README.md)
 
-Im Teil Webserver installieren/konfigurieren
-
 ## [SW2: Mailserver installieren/konfigurieren](SW2/README.md)
 
 ## [SW3: Weiterer Serverdienst installieren/konfigurieren](SW3/README.md)
