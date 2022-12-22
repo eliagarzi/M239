@@ -8,7 +8,7 @@ Ich wollte die Modularbeit dazu nutzen, um Docker und Google Cloud zu lernen. FÃ
 
 FÃ¼r das Modul M239 habe ich folgendes Umgesetzt:
 
-![](./Konfiguration/images/M239_Architektur.png)
+![](https://github.com/eliagarzi/M239/blob/main/Konfiguration/Images/M239_Architektur.png)
 
 ## Aufbau
 
