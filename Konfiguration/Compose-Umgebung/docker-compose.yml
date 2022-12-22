@@ -1,0 +1,56 @@
+version: "3.8"
+services:
+  mysql_server:
+    container_name: mysql-server
+    image: mysql
+    hostname: mysql
+    restart: always
+    ports:
+      - 3306:3306
+    volumes:
+      - ./database-configuration.sql:/docker-entrypoint-initdb.d/database-configuration.sql
+    environment:
+      MYSQL_ROOT_PASSWORD: root123
+
+  wordpress:
+    container_name: wordpress
+    depends_on:
+      - mysql_server
+    build: ./Wordpress-Container
+    restart: always
+    ports:
+      - 9000:80
+    environment:
+      DB_HOST: mysql_server
+      DB_NAME: wordpress
+      DB_USER: wpadmin
+      DB_PASSWORD: Abc123#
+      AUTH_KEY: Schnipi 
+      SECURE_AUTH_KEY: schnapi
+      LOGGED_IN_KEY: schanoadad
+      NONCE_KEY: sdfadsfasdfdsaf
+      AUTH_SALT: asdfasafdasd
+      SECURE_AUTH_SALT: fsadfasd
+      LOGGED_IN_SALT: fho091oioi2obobsa
+      NONCE_SALT: afadsfasfu
+
+  mailwebclient: 
+    container_name: Roundcube-Webmail
+    restart: always
+    ports:
+      - 8890:80
+    depends_on: 
+      - mysql_server
+    image: roundcube/roundcubemail
+    environment:
+      ROUNDCUBEMAIL_DEFAULT_HOST: mx1.zuericloud.ch
+      ROUNDCUBEMAIL_DEFAULT_PORT: 993 
+      ROUNDCUBEMAIL_SMTP_SERVER: mx1.zuericloud.ch
+      ROUNDCUBEMAIL_SMTP_PORT: 465
+      ROUNDCUBEMAIL_DB_TYPE: mysql
+      ROUNDCUBEMAIL_DB_HOST: mysql_server
+      ROUNDCUBEMAIL_DB_PORT: 3306
+      ROUNDCUBEMAIL_DB_USER: roundcube
+      ROUNDCUBEMAIL_DB_PASSWORD: Abc123#
+      ROUNDCUBEMAIL_DB_NAME: rouncube
+
